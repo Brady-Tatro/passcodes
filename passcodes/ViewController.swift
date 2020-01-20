@@ -47,18 +47,23 @@ class ViewController: UIViewController {
     @IBAction func num0(_ sender: Any) {
         passwordAttempt.text = updatePassword(buttonNum: "0", currentPassword: passwordAttempt.text!)
     }
+    
     @IBAction func attemptPassword(_ sender: Any) {
         let unlockPassword = "975321"
-        print(passwordAttempt.text!)
         if passwordAttempt.text! == unlockPassword {
             passwordAttempt.text = "Hacked"
         } else {
-            passwordAttempt.text = ""
+            passwordAttempt.text = "Failed"
         }
     }
+    
+    @IBAction func clearPassword(_ sender: Any) {
+        passwordAttempt.text = ""
+    }
+    
     func updatePassword(buttonNum: String, currentPassword: String) -> String {
         var password = currentPassword
-        if currentPassword == "Enter Password"{
+        if currentPassword == "Enter Password" || currentPassword == "Failed"{
             password = ""
         };
         let updatedPassword = password + buttonNum
